@@ -1,0 +1,64 @@
+.game-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 2rem;
+  background-color: #f2f2f2;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+input[type='number'] {
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  transition: border 0.3s ease;
+}
+
+input[type='number']:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[disabled] {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+button:hover:not([disabled]) {
+  background-color: #0056b3;
+}
+
+.feedbackMessage {
+  margin-top: 1rem;
+  font-size: 18px;
+  font-weight: bold;
+  color: #e63946; // red for incorrect or end
+}

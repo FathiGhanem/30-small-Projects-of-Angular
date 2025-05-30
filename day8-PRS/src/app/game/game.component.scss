@@ -1,0 +1,306 @@
+/* Rock Paper Scissors Game Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    animation: slideIn 0.6s ease-out;
+    
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.choice {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.choice button {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 120px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.choice button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.choice button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 15px 25px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    background: linear-gradient(145deg, #f8f9ff, #e8e9f0);
+}
+
+.choice button:hover::before {
+    left: 100%;
+}
+
+.choice button:active {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+        0 8px 15px rgba(0, 0, 0, 0.2),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.choice button img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.choice button:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.results {
+    background: linear-gradient(135deg, #f8f9ff 0%, #e8e9f0 100%);
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 20px;
+    animation: fadeInUp 0.5s ease-out;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.results p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.results strong {
+    color: #667eea;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.results img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 8px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: bounce 0.6s ease-out;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.results h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: pulse 0.8s ease-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Result-specific colors */
+.results h2:contains("Win"),
+.results h2:contains("فزت"),
+.results h2:contains("You Win") {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+}
+
+.results h2:contains("Lose"),
+.results h2:contains("خسرت"),
+.results h2:contains("You Lose") {
+    background: linear-gradient(45deg, #f44336, #da190b);
+}
+
+.results h2:contains("Tie"),
+.results h2:contains("تعادل"),
+.results h2:contains("Draw") {
+    background: linear-gradient(45deg, #ff9800, #f57c00);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .choice {
+        gap: 15px;
+    }
+    
+    .choice button {
+        min-width: 100px;
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    .choice button img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .results {
+        padding: 20px;
+    }
+    
+    .results p {
+        font-size: 1.1rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .results h2 {
+        font-size: 1.5rem;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .choice {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .choice button {
+        width: 200px;
+    }
+}
+
+/* Loading animation for images */
+.choice button img,
+.results img {
+    transition: opacity 0.3s ease;
+}
+
+.choice button img:not([src]),
+.results img:not([src]) {
+    opacity: 0.3;
+    background: #f0f0f0;
+}
+
+/* Hover effects for mobile */
+@media (hover: none) {
+    .choice button:hover {
+        transform: none;
+    }
+    
+    .choice button:active {
+        transform: scale(0.95);
+    }
+}
+

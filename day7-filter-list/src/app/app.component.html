@@ -1,0 +1,12 @@
+<div class="container">
+    <h1 class="title">Dynamic List Filter</h1>
+    <input type="text" 
+    placeholder="Search ..." 
+    [(ngModel)]="seacrhText"
+    class="form-control search-box"
+    />
+    <ul class="list-groub"></ul>
+    <li *ngFor="let item of items | filter : seacrhText " class="list-groub-item">
+        {{item}}
+    </li>
+</div>

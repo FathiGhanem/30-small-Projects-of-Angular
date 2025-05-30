@@ -1,0 +1,26 @@
+<body>
+    
+    <div class="game-container">
+        <h1 class="title">Tic Tac Toe</h1>
+        
+        <p class="turn" *ngIf="!gameOver">Player <span [class.x]="turn" [class.o]="!turn">{{ turn ? 'X' : 'O' }}</span> turn</p>
+        
+        <ul class="board">
+            <li *ngFor="let item of arr; let i = index">
+                <button
+                [ngClass]="{'win-cell': winningPattern.includes(i)}"
+                [disabled]="item !== '' || gameOver"
+                (click)="play(i)">
+                {{ item }}
+            </button>
+        </li>
+    </ul>
+    
+    <p class="status" *ngIf="gameStatus">{{ gameStatus }}</p>
+    
+    <button *ngIf="gameOver" (click)="restartGame()" class="restart-btn">
+        🔄 Restart Game
+    </button>
+</div>
+
+</body>
