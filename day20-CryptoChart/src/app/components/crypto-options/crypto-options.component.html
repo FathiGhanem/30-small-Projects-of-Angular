@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="crypto-options">
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="coin"> Coin: </label>
+        <select [(ngModel)]="coin" id="coin" name="coin">
+          <option *ngFor="let coinOption of coinOptions" [value]="coinOption">
+            {{ coinOption }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="currency">Currency:</label>
+        <select name="currency" id="currency" [(ngModel)]="currency">
+          <option *ngFor="let c of currencyOptions" [value]="c">{{ c }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="days">Days:</label>
+        <select name="days" id="days" [(ngModel)]="days">
+            <option *ngFor="let d of daysOptions" [value]="d">{{d}}</option>
+        </select>
+      </div>
+      <button type="submit" >Update Chart</button>
+    </form>
+  </div>
+</div>
