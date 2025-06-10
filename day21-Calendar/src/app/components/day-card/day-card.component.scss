@@ -1,0 +1,135 @@
+.day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 0.8rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 80px;
+  border: 2px solid transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.day-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(103, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.day-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-color: rgba(103, 126, 234, 0.3);
+}
+
+.day-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== Day Number Styling ===== */
+.day {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.3rem;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+/* ===== Day Name Styling ===== */
+.day-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+/* ===== Today State ===== */
+.day-card.today {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.day-card.today .day {
+  color: white;
+  font-size: 1.7rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.day-card.today .day-name {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.day-card.today::after {
+  content: '●';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  animation: pulse 2s infinite;
+}
+
+/* ===== Past State ===== */
+.day-card.past {
+  background: rgba(160, 174, 192, 0.3);
+  opacity: 0.6;
+  filter: grayscale(20%);
+}
+
+.day-card.past .day {
+  color: #a0aec0;
+}
+
+.day-card.past .day-name {
+  color: #cbd5e0;
+}
+
+.day-card.past:hover {
+  opacity: 0.8;
+  transform: translateY(-2px) scale(1.02);
+  filter: grayscale(0%);
+}
+
+/* ===== Day Card Animations ===== */
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.1);
+  }
+}
+
+@keyframes glow {
+  0% { 
+    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+  }
+  100% { 
+    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.6);
+  }
+}
