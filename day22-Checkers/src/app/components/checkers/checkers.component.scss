@@ -1,0 +1,283 @@
+.checkers-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.checkers-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Header Styles */
+.checkers-container h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.checkers-container h2 span {
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.checkers-container h3 {
+  color: #ffd700;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: pulse 2s infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Board Styles */
+.board {
+  display: inline-block;
+  border: 4px solid #8B4513;
+  border-radius: 15px;
+  background: #D2B48C;
+  padding: 8px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(139, 69, 19, 0.3);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+/* Light cells */
+.cell {
+  background: linear-gradient(45deg, #F5DEB3, #DEB887);
+}
+
+/* Dark cells */
+.cell.dark-cell {
+  background: linear-gradient(45deg, #8B4513, #A0522D);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cell.dark-cell:hover {
+  background: linear-gradient(45deg, #A0522D, #CD853F);
+}
+
+/* Selected cell */
+.cell.selected {
+  background: linear-gradient(45deg, #FFD700, #FFA500) !important;
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.8),
+    inset 0 0 10px rgba(255, 215, 0, 0.3);
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), inset 0 0 10px rgba(255, 215, 0, 0.3); }
+  to { box-shadow: 0 0 30px rgba(255, 215, 0, 1), inset 0 0 15px rgba(255, 215, 0, 0.5); }
+}
+
+/* Piece Styles */
+.piece {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.piece:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+/* Red pieces */
+.piece.red {
+  background: radial-gradient(circle at 30% 30%, #FF6B6B, #E74C3C, #C0392B);
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Black pieces */
+.piece.black {
+  background: radial-gradient(circle at 30% 30%, #4A4A4A, #2C3E50, #1A1A1A);
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* King pieces */
+.piece.red-king {
+  background: radial-gradient(circle at 30% 30%, #FFD700, #FF6B6B, #E74C3C);
+  border: 3px solid #FFD700;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.piece.black-king {
+  background: radial-gradient(circle at 30% 30%, #C0C0C0, #4A4A4A, #2C3E50);
+  border: 3px solid #C0C0C0;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    0 0 15px rgba(192, 192, 192, 0.5);
+}
+
+.king-symbol {
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  color: #FFD700;
+  animation: kingGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes kingGlow {
+  from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); }
+  to { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px #FFD700; }
+}
+
+/* Restart Button */
+.rest-button {
+  background: linear-gradient(45deg, #FF6B6B, #E74C3C);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+.rest-button:hover {
+  background: linear-gradient(45deg, #E74C3C, #C0392B);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+}
+
+.rest-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .checkers-container {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .cell {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .piece {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+  
+  .king-symbol {
+    font-size: 14px;
+  }
+  
+  .checkers-container h2 {
+    font-size: 1.4rem;
+  }
+  
+  .checkers-container h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cell {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .piece {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+  
+  .king-symbol {
+    font-size: 12px;
+  }
+}
