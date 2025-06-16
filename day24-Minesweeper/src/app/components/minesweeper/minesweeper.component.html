@@ -1,0 +1,20 @@
+<div class="game-container">
+  <app-timer />
+  <div class="grid">
+    <div *ngFor="let row of gameService.grid; let rowIndex = index" class="row">
+      <app-cell
+        *ngFor="let cell of row; let colIndex = index"
+        [row]="rowIndex"
+        [col]="colIndex"
+        [cell]="cell"
+        (cellClicked)="onCellClick($event)"
+        (cellFlagged)="onCellFlagged($event)"
+      ></app-cell>
+    </div>
+  </div>
+
+  <div class="game-status" *ngIf="gameService.gameOver">
+    <p *ngIf="gameService.gameWon">Congratulations! You won!</p>
+    <p *ngIf="!gameService.gameWon">Game Over!</p>
+  </div>
+</div>

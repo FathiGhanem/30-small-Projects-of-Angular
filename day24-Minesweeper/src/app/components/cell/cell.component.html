@@ -1,0 +1,22 @@
+<div
+  class="cell"
+  [class.revealed]="cell.isRevealed"
+  [class.mine]="cell.isMine"
+  [class.flagged]="cell.isFlagged"
+  (click)="onLeftClick()"
+  (contextmenu)="onRightClick($event)"
+>
+  <!-- محتوى الخلية يظهر فقط إذا كانت مكسوفة -->
+  <ng-container *ngIf="cell.isRevealed">
+    <!-- قنبلة -->
+    <span *ngIf="cell.isMine">💣</span>
+
+    <!-- رقم الألغام المجاورة -->
+    <span *ngIf="!cell.isMine">{{ cell.adjacentMines || "" }}</span>
+  </ng-container>
+
+  <!-- علم يظهر فقط إذا الخلية مش مكسوفة وفي عليها علم -->
+  <ng-container *ngIf="!cell.isRevealed && cell.isFlagged">
+    🚩
+  </ng-container>
+</div>
