@@ -1,0 +1,157 @@
+.user-form-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 32px 24px;
+  margin: 16px;
+  
+
+  h2 {
+    margin: 0 0 24px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    input {
+      padding: 14px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      background: #fff;
+
+      &:focus {
+        outline: none;
+        border-color: #2196f3;
+        box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+      }
+
+      &::placeholder {
+        color: #999;
+      }
+
+      &:hover {
+        border-color: #bdbdbd;
+      }
+
+      // Validation states
+      &.ng-invalid.ng-touched {
+        border-color: #f44336;
+        box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+      }
+
+      &.ng-valid.ng-touched {
+        border-color: #4caf50;
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+      }
+    }
+
+    button {
+      padding: 14px 24px;
+      background: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 8px;
+
+      &:hover:not(:disabled) {
+        background: #1976d2;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+      }
+
+      &:disabled {
+        background: #e0e0e0;
+        color: #999;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .user-card {
+    margin: 8px;
+    padding: 20px;
+
+    .user-name {
+      font-size: 20px;
+      padding-right: 70px;
+    }
+
+    .user-actions {
+      top: 12px;
+      right: 12px;
+
+      .edit,
+      .delete {
+        width: 28px;
+        height: 28px;
+
+        img {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+
+  .modal {
+    .modal-contant {
+      width: 95%;
+      margin: 20px;
+
+      .modal-header,
+      .modal-body,
+      .modal-footer {
+        padding: 16px 20px;
+      }
+
+      .modal-footer {
+        flex-direction: column;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .user-form-container {
+    margin: 8px;
+    padding: 24px 20px;
+
+    h2 {
+      font-size: 20px;
+    }
+
+    form {
+      input {
+        padding: 12px 14px;
+      }
+
+      button {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+    }
+  }
+}

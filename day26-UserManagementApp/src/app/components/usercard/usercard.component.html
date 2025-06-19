@@ -1,0 +1,75 @@
+<div class="user-card">
+  <div class="user-actions">
+    <div class="edit" title="Edit" (click)="onEdit()">
+      <img src="edit.svg" alt="edit" />
+    </div>
+    <div class="delete" title="delete" (click)="onDelete()">
+      <img src="delete.svg" alt="delete" />
+    </div>
+  </div>
+  <h2 class="user-name">{{ user.name }}</h2>
+  <div class="user-details">
+    <p><strong>UserName:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Phone:</strong> {{ user.phone }}</p>
+    <p>
+      <strong>Website:</strong>
+      <a href="http://{{ user.website }}"> {{ user.website }}</a>
+    </p>
+  </div>
+</div>
+
+<div class="modal" *ngIf="isEditingModalOpen">
+  <div class="modal-contant">
+    <div class="modal-header">
+      <h2>Edit User</h2>
+      <span class="close" (click)="closeModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <label for="edit-name">Name:</label>
+      <input
+        type="text"
+        id="edit-name"
+        [(ngModel)]="editUser.name"
+        placeholder="Enter Name"
+        required=""
+      />
+      <label for="edit-username">Username:</label>
+      <input
+        type="text"
+        id="edit-username"
+        [(ngModel)]="editUser.username"
+        placeholder="Enter username"
+        required=""
+      />
+      <label for="edit-email">Email:</label>
+      <input
+        type="text"
+        id="edit-Email"
+        [(ngModel)]="editUser.email"
+        placeholder="Enter Email"
+        required=""
+      />
+      <label for="edit-phone">Phone:</label>
+      <input
+        type="text"
+        id="edit-phone"
+        [(ngModel)]="editUser.phone"
+        placeholder="Enter phone number"
+        required=""
+      />
+      <label for="edit-website">Website:</label>
+      <input
+        type="text"
+        id="edit-website"
+        [(ngModel)]="editUser.website"
+        placeholder="Enter website URL"
+        required=""
+      />
+    </div>
+    <div class="modal-footer">
+        <button (click)="saveChanges()">Save Changes</button>
+        <button (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
