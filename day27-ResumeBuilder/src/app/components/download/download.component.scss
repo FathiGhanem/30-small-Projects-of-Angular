@@ -1,0 +1,199 @@
+$primary-color: #2c3e50;
+$secondary-color: #34495e;
+$accent-color: #3498db;
+$text-color: #2c3e50;
+$light-bg: #ecf0f1;
+$white: #ffffff;
+$border-color: #bdc3c7;
+$highlight-color: #e74c3c;
+// Typography
+$font-primary: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$font-size-base: 14px;
+$font-size-large: 18px;
+$font-size-xlarge: 24px;
+$line-height-base: 1.6;
+
+// Spacing
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+
+.download-button {
+  background: linear-gradient(135deg, $accent-color 0%, #2980b9 100%);
+  color: $white;
+  border: none;
+  padding: $spacing-md $spacing-xl;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: $font-primary;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+
+  // Icon effect
+  &::before {
+    content: "📄";
+    margin-right: $spacing-xs;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  // Hover effects
+  &:hover {
+    background: linear-gradient(135deg, #2980b9 0%, $accent-color 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+
+    &::before {
+      transform: scale(1.1);
+    }
+  }
+
+  // Active state
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3);
+  }
+
+  // Focus state for accessibility
+  &:focus {
+    outline: none;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3),
+      0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+
+  // Disabled state
+  &:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+
+    &:hover {
+      background: #95a5a6;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  // Loading state
+  &.loading {
+    background: #95a5a6;
+    cursor: wait;
+    position: relative;
+
+    &::before {
+      content: "⏳";
+      animation: spin 1s linear infinite;
+    }
+
+    &::after {
+      content: "Generating PDF...";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+  }
+}
+
+// Responsive button
+@media (max-width: 768px) {
+  .button-container {
+    margin: $spacing-lg 0;
+    padding: $spacing-md;
+  }
+
+  .download-button {
+    width: 100%;
+    max-width: 300px;
+    padding: $spacing-md $spacing-lg;
+    font-size: 15px;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .download-button {
+    padding: $spacing-sm $spacing-md;
+    font-size: 14px;
+    border-radius: 25px;
+  }
+}
+
+// Print - hide button
+@media print {
+  .button-container {
+    display: none;
+  }
+}
+
+// Animation
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.left-column {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.right-column {
+  animation: slideInRight 0.6s ease-out 0.2s both;
+}
+
+.button-container {
+  animation: slideInRight 0.6s ease-out 0.4s both;
+}
+
+// Button hover animation
+.download-button:hover {
+  animation: pulse 2s infinite;
+}

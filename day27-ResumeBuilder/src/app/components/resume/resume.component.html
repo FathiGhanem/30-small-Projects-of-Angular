@@ -1,0 +1,109 @@
+<div class="resume-container" #resume>
+  <div class="resume">
+    <div class="resume-column">
+      <div class="left-column">
+        <div class="photo-container">
+          <img
+            *ngIf="photoService.photoUrl"
+            [src]="photoService.photoUrl"
+            alt="Resume Photo"
+            class="profile-photo"
+          />
+        </div>
+
+        <h1 class="resume-title">{{ resumeData.name }}</h1>
+
+        <section class="contact">
+          <div *ngIf="isNotEmpty(resumeData.email)">
+            <b>Email:</b>
+            <span class="contact-info">{{ resumeData.email }}</span>
+          </div>
+
+          <div *ngIf="isNotEmpty(resumeData.phone)">
+            <b>Phone:</b>
+            <span class="contact-info">{{ resumeData.phone }}</span>
+          </div>
+
+          <div *ngIf="isNotEmptyItems(resumeData.address)">
+            <b>Address:</b>
+            <ng-container *ngFor="let line of resumeData.address">
+              <p *ngIf="isNotEmpty(line)" class="contact-info">
+                {{ line }}
+              </p>
+            </ng-container>
+          </div>
+
+          <div *ngIf="isNotEmptyItems(resumeData.links)">
+            <b>Links:</b>
+            <ng-container *ngFor="let line of resumeData.links">
+              <p *ngIf="isNotEmpty(line)" class="contact-info">
+                {{ line }}
+              </p>
+            </ng-container>
+          </div>
+
+          <div *ngIf="isNotEmptyItems(resumeData.languages)">
+            <b>Languages:</b>
+            <ng-container *ngFor="let line of resumeData.languages">
+              <p *ngIf="isNotEmpty(line)" class="contact-info">
+                {{ line }}
+              </p>
+            </ng-container>
+          </div>
+        </section>
+      </div>
+      <div class="right-column">
+        <section *ngIf="isNotEmpty(resumeData.aboutMe)">
+          <h3>About Me:</h3>
+          <p>{{ resumeData.aboutMe }}</p>
+        </section>
+        <section *ngIf="isNotEmptyItems(resumeData.education)">
+          <h3>Education</h3>
+          <ul>
+            <ng-container *ngFor="let edu of resumeData.education">
+              <li *ngIf="isNotEmpty(edu)">{{ edu }}</li></ng-container
+            >
+          </ul>
+        </section>
+
+        <section *ngIf="isNotEmptyItems(resumeData.experience)">
+          <h3>Experience</h3>
+          <ul>
+            <ng-container *ngFor="let exp of resumeData.experience">
+              <li *ngIf="isNotEmpty(exp)">{{ exp }}</li></ng-container
+            >
+          </ul>
+        </section>
+
+        <section *ngIf="isNotEmptyItems(resumeData.skills)">
+          <h3>Skills</h3>
+          <ul>
+            <ng-container *ngFor="let skill of resumeData.skills">
+              <li *ngIf="isNotEmpty(skill)">{{ skill }}</li></ng-container
+            >
+          </ul>
+        </section>
+
+        <section >
+          <h3 >Projects:</h3>
+          <ul>
+            <ng-container *ngFor="let p of resumeData.projects">
+              <li *ngIf="isNotEmpty(p.name)">
+                <b>{{ p.name }}</b>
+                <p>{{ p.description }}</p>
+              </li>
+            </ng-container>
+          </ul>
+        </section>
+        <section *ngIf="isNotEmptyItems(resumeData.courses)">
+          <h3>Courses</h3>
+          <ul>
+            <ng-container *ngFor="let c of resumeData.courses">
+              <li *ngIf="isNotEmpty(c)">{{ c }}</li></ng-container
+            >
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
